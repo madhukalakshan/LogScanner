@@ -31,6 +31,8 @@ public class RunnerTest {
 		ArrayList<String> tagValues = new ArrayList<String>();
 
 		Scanner scanner = new Scanner(System.in);
+		
+		commonStps.startPropertyFile();
 
 		System.out.println("Please enter the file path(ex:C:/test/folder/) : ");
 		filePath = scanner.nextLine();

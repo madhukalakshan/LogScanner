@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.log4j.Logger;
 
 public class LogScanner {
 
@@ -38,6 +39,8 @@ public class LogScanner {
 	public static ArrayList<ArrayList<String>> tagValueTotal = new ArrayList<ArrayList<String>>();
 
 	static ConfigFileReader configFileReader;
+	
+	Logger log = Logger.getLogger("LOG");
 
 	public LogScanner() {
 		configFileReader = new ConfigFileReader();
@@ -91,7 +94,7 @@ public class LogScanner {
 		}
 	}
 
-	public static void isCardNumber() {
+	public void isCardNumber() {
 
 		try {
 
@@ -176,6 +179,7 @@ public class LogScanner {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 	}
 
@@ -224,6 +228,7 @@ public class LogScanner {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			log.error(e.getMessage(), e);
 			throw (e);
 		}
 
@@ -257,6 +262,7 @@ public class LogScanner {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 
 	}
@@ -360,6 +366,7 @@ public class LogScanner {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 
 	}

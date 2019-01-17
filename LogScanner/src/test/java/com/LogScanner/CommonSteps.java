@@ -20,6 +20,8 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -29,6 +31,8 @@ public class CommonSteps {
 
 	ConfigFileReader configFileReader;
 	LogScanner meth;
+	
+	Logger log = Logger.getLogger("LOG");
 
 	static int summaryRowNumber = 0;
 
@@ -58,6 +62,7 @@ public class CommonSteps {
 			workbook.close();
 		} catch (IOException e) {
 			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 	}
 
@@ -115,12 +120,14 @@ public class CommonSteps {
 
 				} catch (Exception e) {
 					e.printStackTrace();
+					log.error(e.getMessage(), e);
 				}
 
 			}
 
 		} catch (Exception e1) {
 			e1.printStackTrace();
+			log.error(e1.getMessage(), e1);
 		}
 
 	}
@@ -569,6 +576,7 @@ public class CommonSteps {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		} finally {
 			meth.masterCard.clear();
 			meth.visaCard.clear();
@@ -645,8 +653,10 @@ public class CommonSteps {
 
 		} catch (MessagingException e) {
 			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		} catch (Exception e1) {
 			e1.printStackTrace();
+			log.error(e1.getMessage(), e1);
 		}
 	}
 
@@ -996,6 +1006,7 @@ public class CommonSteps {
 
 			} catch (Exception e) {
 				e.printStackTrace();
+				log.error(e.getMessage(), e);
 			} finally {
 				meth.track2Value.clear();
 			}
@@ -1166,6 +1177,7 @@ public class CommonSteps {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		} finally {
 			meth.tagValueList.clear();
 		}
@@ -1199,8 +1211,13 @@ public class CommonSteps {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 
+	}
+	
+	public void startPropertyFile() {
+		   PropertyConfigurator.configure("config/Configuration.properties");
 	}
 
 }
